@@ -1,8 +1,6 @@
 [![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 [![Build and Test](https://github.com/librasteve/cragcli-info/actions/workflows/ci.yml/badge.svg)](https://github.com/librasteve/cragcli-info/actions/workflows/ci.yml)
 
-Please raise an Issue if you would like to feedback or assist.
-
 # Cragcli
 
 Code for the cragcli.info website.
