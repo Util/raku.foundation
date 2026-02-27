@@ -2,12 +2,7 @@ asciinema --help
 asciinema rec  -q -i 1 demoN.cast --overwrite
 asciinema play -q -s 2 demoN.cast
 
-
-#Basics (?)
-> crag '0.1+0.2'    #command line
-> crag --help       #help
-> crag              #interactive
-#up/down arrows to select a previous command
+#$_ * 7              #previous result
 
 #1. Arithmetic
 
@@ -27,26 +22,22 @@ sqrt 6              #sqrt
 #3. Functions & Complex Numbers
 
 log10 1000          #log (base 10)
-10**$_              #reverse  
+10**3               #reverse
 log e               #natural log & e
-exp $_              #exponetial
+exp(log e)          #exponetial
 cos pi              #trigonometry
-acos $_             #reverse
+acos(cos pi)        #reverse
 sinh 3i+4           #hyperbolics
-asinh $_            #reverse
 (3+4i).polar        #polar coords
 (3+4i) gcd (3-2i)   #Gaussian GCD
 
 #4. Variables & Strings
 
-$x = 42             #assignment
-$x / 7              #persistence
-$_ * 7              #previous result
+$x=42; $x/7         #named memory
 $s="hello"          #strings
-"ans is $x"         #interpolation
-$s ~ ': ' ~ $x      #concatenation
-@a = (1,2,3,4)      #list
-@s = <a b c d>      #list of words 
+$x=42; "ans is $x"  #interpolation
+@a = (1,2,3,4)      #list of numbers
+@s = <a b c d>      #list of strings
 
 #5. Number Types
 
@@ -88,8 +79,8 @@ r Nil; sqrt 10      #3.1622776601683795 (float64 rounding)
 80kg                #kilograms
 42m / 10s           #speed in m/s (s=d/t)
 20kg * g            #weight in N (F=ma)
-$_ .in: 'lb'        #conversion (note spaces)
-$_ * 4m             #energy in J (E=Fd)
+(10N).in: 'lb'        #conversion (note spaces)
+10N * 4m             #energy in J (E=Fd)
 (10m~10%)+(5m~0.2)  #error
 
 #9. Non-SI Units & Constants
@@ -125,13 +116,7 @@ c<red>              #CSS colors
 
 #11. Currency & Conversions
 
-?<what is an LLM>   #text query
+?<what is an elephant>   #text query
 ?^<mass of an elephant in kg> #make a unit
 sleep 4; say "Wake up it's {DateTime.now.hh-mm-ss} \a\a\a"
 qx<clear>
-
-#12. LLM Queries
-
-#crag is a full raku repl - so you can write subroutines, loops, conditionals, comparisons and so on
-#if your calculations outgrow the crag app, use can use the crag modules in raku code
-#visit https://raku.org and https://github.com/librasteve/raku-App-Crag for more

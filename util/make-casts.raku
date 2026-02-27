@@ -45,7 +45,7 @@ sub line-out($s) {
 }
 
 sub line-run($line) {
-    say my $res = qqx`crag -- \'$line\'`.trim;
+    my $res = qqx`crag -- \'$line\'`.trim;
 
     my $stanza;
     $stanza ~= .&line-out ~ "\n" for $line.comb;
@@ -64,7 +64,6 @@ sub cast-out($section, @script) {
     my $out-str = $head;
 
     for @script -> $line {
-        say $line;
         $out-str ~= $line.split('#')[0].trim.&line-run.trim ~ "\n";
     }
 
@@ -99,10 +98,5 @@ for @lines -> $line {
 }
 
 for @sections {
-    .say;
     cast-out($_, %sections{$_})
 }
-
-#for @sections { .say; ddt %sections{$_} }
-#say @sections;
-#ddt %sections<Arithmetic>;
