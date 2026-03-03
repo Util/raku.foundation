@@ -8,7 +8,8 @@ constant $freq = '0.7';  #was 1.0
 constant $last = 20;
 constant $mask-sh = (^$last).SetHash;
 
-$mask-sh{12}:delete;
+#$mask-sh{12}:delete;
+$mask-sh{^3}:delete;
 say "mask: {$mask-sh.keys.sort}";
 
 my @lines = "$path$from".IO.lines;
@@ -38,10 +39,10 @@ for @lines -> $line {
 
 ## Common head and tail
 
-my $head = q:to/END/;
+my $head = q:to/END/;   #note idle_time_limit was 1.0
 {"version":3,"term":{"cols":116,"rows":36,"type":"xterm-256color","theme":{"fg":"#ffffff","bg":"#1e1e1e","palette":"#000000:#990000:#00a600:#999900:#0000b3:#b300b3:#00a6b3:#bfbfbf:#666666:#e60000:#00d900:#e6e600:#0000ff:#e600e6:#00e6e6:#e6e6e6"}},"timestamp":1770210678,"idle_time_limit":0.7,"env":{"SHELL":"/bin/zsh"}}
 [0.000, "o", "\r\u001b[0m\u001b[27m\u001b[24m\u001b[J~ > \u001b[K\u001b[?2004h"]
-[1.524, "o", "c"]
+[0.524, "o", "c"]
 [0.203, "o", "r"]
 [0.191, "o", "a"]
 [0.090, "o", "g"]
@@ -49,7 +50,7 @@ my $head = q:to/END/;
 END
 
 my $tail = q:to/END/;
-[2.395, "o", "e"]
+[1.395, "o", "e"]
 [0.314, "o", "x"]
 [0.296, "o", "i"]
 [0.116, "o", "t"]
@@ -65,24 +66,35 @@ sub line-out($s) {
     qq`[$rand, "o", "$s"]`;
 }
 
+sub drip($line, $stanza is rw) {
+    $stanza ~= .&line-out ~ "\n" for $line.comb;
+    $stanza ~= .&line-out given '\r\n';
+    $stanza ~= "\n";
+    $stanza;
+}
+
+sub drop($line, $stanza is rw) {
+    $stanza ~= .&line-out ~ "\n" given $line;
+    $stanza ~= .&line-out given '\r\n';
+    $stanza ~= "\n";
+    $stanza;
+}
+
 sub line-run($line, :$auto, :$prompt) {
     say $line;
 
     my $stanza;
-
+    ##iamerejh
     if $prompt {
         $stanza ~= .&line-out given '> ';
         $stanza ~= "\n";
     }
 
-    $stanza ~= .&line-out ~ "\n" for $line.comb;
-    $stanza ~= .&line-out given '\r\n';
-    $stanza ~= "\n";
+    drip($line, $stanza);
 
     if $auto {
         my $res = qqx`crag -- \'$line\'`.trim;
-        $stanza ~= .&line-out given $res ~ '\r\n';
-        $stanza ~= "\n";
+        drop($res, $stanza)
     }
 
     $stanza;
