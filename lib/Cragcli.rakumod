@@ -67,18 +67,12 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                             article [ markdown q:to/END/;
                                 #### 1. Arithmetic
 
-                                As you would expect, all math operations are here.
-
                                   - `+`add,`-`subtract, `*`multiply, `/`divide
                                   - `()` parentheses (bidmas precedence)
                                   - `-ve` numbers
                                   - `%` modulo operator
-                                  - exact rational math
 
-                                Just type `crag` in your console.
-
-                                Type `exit` to quit.
-
+                                Just type `crag` in your console: `exit` to quit.
                                 END
                                 code-note 'starts in 1 second [note 1]';
                             ];
@@ -92,9 +86,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                             article [ markdown q:to/END/;
                                 #### 2. Functions
 
-                                Powers and roots are here too.
-
-                                  - `x%` percentage
+                                  - `x%` percent
                                   - `1/x` reciprocal
                                   - `x!` factorial
                                   - `sqrt x` square root
@@ -102,28 +94,24 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                   - `x**(1/2)`, `x**(1/3)`, `x**(1/n)` roots
 
                                 Use `Up` / `Down` keys to navigate history.
-
-                                History persists between sessions.
                                 END
-                                code-note 'right in your terminal ';
+                                code-note 'right in your terminal';
                             ];
                             article [
                                 asciinema '/static/demos/demo-Functions.cast';
                             ];
                         ];
 
-                    Logarithms => tab
+                    Logs => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 3. Logarithms
-
-                                Logarithms and exponentials are provided.
+                                #### 3. Logarithms & Exponentials
 
                                   - `log10 x` base `10` logarithms
                                   - `log x` natural logarithms (base `e`)
                                   - `exp x` exponentials
 
-                                Use `$_` for the previous result (the topic)
+                                Use `$_` for previous result (the topic)
                                 END
                                 code-note 'Euler\'s identity works fine';
                             ];
@@ -132,12 +120,10 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                             ];
                         ];
 
-                    Trigonometry => tab
+                    Trig => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 4. Trigonometry
-
-                                Trigonometric and hyperbolic functions with inverse (arc-) variants.
+                                #### 4. Trigonometric & Hyperbolic
 
                                   - `sin x`, `cos x`, `tan x` trigonometry
                                   - `asin x`, `acos x`, `atan x` inverse
@@ -158,8 +144,6 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                             article [ markdown q:to/END/;
                                 #### 5. Complex
 
-                                A built-in number type.
-
                                   - `i` Imaginary
                                   - `3+4i` Complex
                                   - `.abs` absolute magnitude
@@ -178,12 +162,12 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                             article [ markdown q:to/END/;
                                 #### 6. Random
 
-                                  - `rand` random generate (0-1)
+                                  - `rand` random (0 <= x < 1)
                                   - `10.rand` random in range (0 <= x < 10)
                                   - `(1..6).pick: 6` random select
                                   - `(1..6).roll: 6` random repeat
 
-                                Use `.pick` for one time, `.roll` is like a dice.
+                                Use `.pick` one time, `.roll` like a dice.
                                 END
                                 code-note 'uses the MT19937 — Mersenne Twister algorithm';
                             ];
@@ -205,7 +189,6 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                   - `@a` is an array variable (i.e. a list of items)
                                   - `@a[i]` to index an array
                                   - `<>` to quote a wordlist
-                                .
                                 END
                                 code-note 'hashes (dictionaries) too e.g. %h{}';
                             ];
@@ -434,9 +417,9 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                   - `+<`, `+>` bitwise shift
                                   - `c`, `g`, `Na` constants
 
-                                Approximate 20 built-in constants.
+                                Approx. 20 built-in constants.
                                 END
-                                code-note 'and there\'s more...';
+                                code-note 'install and try it yourself!';
                             ];
                             article [
                                 asciinema '/static/demos/demo-Misc.cast';
@@ -467,6 +450,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
 
                   - Linux => `curl https://rakubrew.org/install-on-perl.sh | sh`
                   - macOS => `curl https://rakubrew.org/install-on-macos.sh | sh`
+                  - Windows => download [https://rakubrew.org/install-on-cmd.bat](https://rakubrew.org/install-on-cmd.bat) and then execute that script in a CMD terminal
 
                 Then:
 
