@@ -110,14 +110,14 @@ r(0.01); ^<pi mph> / ^<e knots>
 1①
 
 ##LLM (!auto)
-?<what is an elephant>          #text query
+?<what is an elephant>  #text query
 An elephant is a large, gray mammal with a trunk and tusks.
-?^<mass of an elephant in kg>   #make a unit
+?^<elephant in kg>
 6000kg
-?^<mass of an elephant in kg> / ?^<mass of a mouse in kg>
+?^<elephant in kg> / ?^<mouse in kg>
 240000①
-?^<molecular-mass of SO2 in grams per mole>
-64.07grams per mole
+?^<SO2 molecular mass in u>
+64.06u
 
 ##SIUnits (!auto)
 42m                 #metres

@@ -8,7 +8,7 @@ constant $freq = '0.7';  #was 1.0
 constant $last = 20;
 #constant $mask-sh = ().SetHash;
 constant $mask-sh = (^$last).SetHash;
-$mask-sh{17}:delete;
+$mask-sh{9}:delete;
 
 my @lines = "$path$from".IO.lines;
 
