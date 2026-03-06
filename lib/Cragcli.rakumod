@@ -236,7 +236,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                   - `r Nil` turns off rounding
 
                                 END
-                                code-note 'intermediate values keep full precision';
+                                code-note 'full internal precision';
                             ];
                             article [
                                 asciinema '/static/demos/demo-Rounding.cast';
