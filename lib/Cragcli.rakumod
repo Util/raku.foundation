@@ -483,7 +483,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
 
                   1. Starts in approx. 1sec (as measured on an M1 MacBook, takes longer on first run).
 
-                  2. For LLM::DWIM features, you will need e.g. a free of charge [Gemini App Key](https://ai.google.dev/gemini-api/docs/api-key) and go `export GEMINI_API_KEY=mykeygoeshere`.
+                  2. For LLM::DWIM features, you will need e.g. a free of charge ChatGPT key and go `export OPENAI_API_KEY=mykeygoeshere`.
 
                   3. Currency exchange rates are provided as at the installation date, reinstall crag (`zef install App::Crag --/test --force-install`) to refresh them.
 
