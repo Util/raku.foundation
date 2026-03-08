@@ -12,6 +12,9 @@ sub code-note($s) {
 sub vignette(*@a, *%h) {
     grid :grid-template-columns<2.2fr 3.2fr>, :gap(1.5), |%h, @a
 }
+sub asciidemo($s) {
+    div :style("min-height:350px;"), asciinema $s
+}
 
 my &index = &page.assuming( #:REFRESH(15),
     title => 'CragCLI',
@@ -78,7 +81,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'starts in 1 second [note 1]';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Arithmetic.cast';
+                                asciidemo '/static/demos/demo-Arithmetic.cast';
                             ];
                         ];
 
@@ -99,7 +102,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'right in your terminal';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Functions.cast';
+                                asciidemo '/static/demos/demo-Functions.cast';
                             ];
                         ];
 
@@ -117,7 +120,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'Euler\'s identity works fine';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Logs.cast';
+                                asciidemo '/static/demos/demo-Logs.cast';
                             ];
                         ];
 
@@ -136,7 +139,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'degrees, radians, grads';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Trig.cast';
+                                asciidemo '/static/demos/demo-Trig.cast';
                             ];
                         ];
 
@@ -155,7 +158,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'polar coordinate transformations';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Complex.cast';
+                                asciidemo '/static/demos/demo-Complex.cast';
                             ];
                         ];
 
@@ -174,7 +177,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'uses the MT19937 — Mersenne Twister algorithm';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Random.cast';
+                                asciidemo '/static/demos/demo-Random.cast';
                             ];
                         ];
 
@@ -195,7 +198,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'hashes (dictionaries) too e.g. %h{}';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Memory.cast';
+                                asciidemo '/static/demos/demo-Memory.cast';
                             ];
                         ];
 
@@ -219,7 +222,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'calculate with googol range';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Types.cast';
+                                asciidemo '/static/demos/demo-Types.cast';
                             ];
                         ];
 
@@ -239,7 +242,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'full internal precision';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Rounding.cast';
+                                asciidemo '/static/demos/demo-Rounding.cast';
                             ];
                         ];
                 ];
@@ -263,7 +266,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'most popular LLM platforms';
                             ];
                             article [
-                                asciinema '/static/demos/demo-LLM.cast';
+                                asciidemo '/static/demos/demo-LLM.cast';
                             ];
                         ];
 
@@ -287,7 +290,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'consistent dimensional analysis';
                             ];
                             article [
-                                asciinema '/static/demos/demo-SIUnits.cast';
+                                asciidemo '/static/demos/demo-SIUnits.cast';
                             ];
                         ];
 
@@ -311,7 +314,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note '20 popular currencies included';
                             ];
                             article [
-                                asciinema '/static/demos/demo-OtherUnits.cast';
+                                asciidemo '/static/demos/demo-OtherUnits.cast';
                             ];
                         ];
 
@@ -331,7 +334,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'a large collection of US, UK and SI units is provided';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Conversions.cast';
+                                asciidemo '/static/demos/demo-Conversions.cast';
                             ];
                         ];
 
@@ -353,7 +356,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'infinite lazy sequences';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Sequences.cast';
+                                asciidemo '/static/demos/demo-Sequences.cast';
                             ];
                         ];
 
@@ -373,7 +376,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'power tools for coders';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Bases.cast';
+                                asciidemo '/static/demos/demo-Bases.cast';
                             ];
                         ];
 
@@ -391,7 +394,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'strings use unicode graphemes';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Unicode.cast';
+                                asciidemo '/static/demos/demo-Unicode.cast';
                             ];
                         ];
 
@@ -405,7 +408,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'modelled on Wolfram Language';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Theory.cast';
+                                asciidemo '/static/demos/demo-Theory.cast';
                             ];
                         ];
 
@@ -424,7 +427,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'install and try it yourself!';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Misc.cast';
+                                asciidemo '/static/demos/demo-Misc.cast';
                             ];
                         ];
 
