@@ -132,25 +132,53 @@ An elephant is a large, gray mammal with a trunk and tusks.
 4.2m/s
 20kg * g            #weight in N (F=ma)
 196.133N
-20kg .in: 'lbm'     #conversion (note spaces)
-44.092lbm
 10N * 4m            #energy in J (E=Fd)
 40J
-(10m~10%)+(5m~0.2)  #error
-15m ±1.2
 
-##OtherUnits
+##NonSI
+^<4 m>             #alternate for 4m
 ^<4 in>             #general syntax
 ^<4 inch>           #synonym
 ^<4 inchs>          #plural
-^<30º10′5″>         #angles (degrees)
-^<3 rad>            #angles (radians)
+^<4 sq ft>          #Area
+^<4 cu yards>       #Volume
+^<4 cu yards> / ^<4 sq ft>
+^<4 million metres>
+(^<4 million metres>).rebase
+(^<4 million metres>).rebase.norm
+^<1 gallon> / ^<1 pint>
+
+##Time (!auto)
+42s ~10%
+42s ±4.2
 ^<23:59:59>         #time
-64Mib               #data
+23:59:59
+'2015-11-24'.Date.year   #date
+2015
+DateTime.now.hh-mm-ss
+13:56:23
+
+##Data
+1b                  #bits
+1B / 1b             #bytes
+64Gib               #RAM
+512GiB              #disk
+?^<datarate of a 4k movie stream in Mbps>
+?^<size of a 4k movie in GiB>
+^<25 GiB> / ^<25 Mbps>
+
+##Currency
 US$25               #currency
 C$20
 £15
 10€
+
+##Angles
+30.2º               #degrees shortform
+1rad                #radians too
+^<30º10′5″>         #angles (degrees)
+^<3 rad>            #angles (radians)
+^<100 grad> cmp ^<90 deg>
 
 ##Conversions (!auto)
 £20  .in: 'USD'     #currency
@@ -163,6 +191,23 @@ C$20
 0.102m
 (^<13.8 gigayears> * c).in: <megaparsec>
 4235megaparsec
+
+##Errors
+10m ~10%
+`^<5 m ~ 0.2>
+(10m~10%)+(5m~0.2)  #error
+(10m~10%)/(5m~0.2)
+
+##Constants
+c                   #speed of light
+g                   #accn due to grabity
+Na                  #Avogadro number
+
+##Colors
+c<red>              #CSS colors
+Color.new(:hsv<152 80 50>).cmyk #conversion
+c<red>.darken(10)   #adjustment
+$r=c<red>;$b=c<blue>;$r+$b
 
 ##Sequences (!auto)
 'hi' xx 4           #repetition
@@ -189,6 +234,10 @@ C$20
 42.base(23)         #any base
 0xFF + 0b1
 
+##Bitwise
+0b1010 +< 2         #bit shift
+0b1010 +& 0b0110    #bitwise AND
+
 ##Unicode
 'π'.ord             #codepoint value
 'π'.uniname         #unicode name
@@ -204,13 +253,3 @@ is-prime(^6)
 (False False True True False True)
 is-happy-number 2026
 True
-
-##Misc
-c<red>              #CSS colors
-c<red>.darken(10)
-$r=c<red>;$b=c<blue>;$r+$b
-0b1010 +< 2         #bit shift
-0b1010 +& 0b0110    #bitwise AND
-c                   #speed of light
-g                   #accn due to grabity
-Na                  #Avogadro number

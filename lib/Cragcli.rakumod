@@ -12,9 +12,6 @@ sub code-note($s) {
 sub vignette(*@a, *%h) {
     grid :grid-template-columns<2.2fr 3.2fr>, :gap(1.5), |%h, @a
 }
-sub asciidemo($s) {
-    div :style("min-height:350px;"), asciinema $s
-}
 
 my &index = &page.assuming( #:REFRESH(15),
     title => 'CragCLI',
@@ -81,7 +78,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'starts in 1 second [note 1]';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Arithmetic.cast';
+                                asciinema '/static/demos/demo-Arithmetic.cast';
                             ];
                         ];
 
@@ -102,7 +99,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'right in your terminal';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Functions.cast';
+                                asciinema '/static/demos/demo-Functions.cast';
                             ];
                         ];
 
@@ -120,7 +117,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'Euler\'s identity works fine';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Logs.cast';
+                                asciinema '/static/demos/demo-Logs.cast';
                             ];
                         ];
 
@@ -139,7 +136,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'degrees, radians, grads';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Trig.cast';
+                                asciinema '/static/demos/demo-Trig.cast';
                             ];
                         ];
 
@@ -158,7 +155,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'polar coordinate transformations';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Complex.cast';
+                                asciinema '/static/demos/demo-Complex.cast';
                             ];
                         ];
 
@@ -177,7 +174,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'uses the MT19937 — Mersenne Twister algorithm';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Random.cast';
+                                asciinema '/static/demos/demo-Random.cast';
                             ];
                         ];
 
@@ -198,7 +195,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'hashes (dictionaries) too e.g. %h{}';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Memory.cast';
+                                asciinema '/static/demos/demo-Memory.cast';
                             ];
                         ];
 
@@ -222,7 +219,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'calculate with googol range';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Types.cast';
+                                asciinema '/static/demos/demo-Types.cast';
                             ];
                         ];
 
@@ -242,7 +239,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'full internal precision';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Rounding.cast';
+                                asciinema '/static/demos/demo-Rounding.cast';
                             ];
                         ];
                 ];
@@ -266,7 +263,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'most popular LLM platforms';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-LLM.cast';
+                                asciinema '/static/demos/demo-LLM.cast';
                             ];
                         ];
 
@@ -278,50 +275,115 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 Just write SI units naturally:
 
                                   - `42m` metres, `10s` seconds and so on
-                                  - `42cm` SI prefixes `c`, `k`, etc too
+                                  - `42cm` SI Prefixes `c`, `k`, etc too
                                   - `42m / 10s` speed in m/s (s=d/t)
                                   - `20kg * g` weight in N (F=ma)
-                                  - `20kg .in: 'lbm'` conversion
                                   - `10N * 4m` energy in J (E=Fd)
-                                  - `(10m~10%)+(5m~0.2)` error handling
-
-                                Both relative `%` and absolute error values can be specified using `~`.
                                 END
                                 code-note 'consistent dimensional analysis';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-SIUnits.cast';
+                                asciinema '/static/demos/demo-SIUnits.cast';
                             ];
                         ];
 
-                    OtherUnits => tab
+                    NonSI => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 12. Other Units
+                                #### 12. Non-SI Units
 
                                 General syntax is `^<value units>`.
 
-                                  - `^<4 in>` non-SI unit
+                                  - `^<4 m>` same as `4m`
+                                  - `^<4 in>` 4 inches
                                   - plurals & synonyms
-                                  - `^<23:59:59>` time
-                                  - `^<30º10'5">` angle (degrees)
-                                  - `^<pi rad>` angle (radians)
-                                  - `64Mib` data
-                                  - `US$25`, `C$20`, `£15`, `10€` currency
+                                  - square and cubic
+                                  - common word prefixes
+                                  - `.rebase` convert to SI Base Unit
+                                  - `.norm` scale to best SI Prefix
 
-                                Special variants are provided for time, angle, data and currency.
                                 END
-                                code-note '20 popular currencies included';
+                                code-note 'auto detect US and Imperial locales';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-OtherUnits.cast';
+                                asciinema '/static/demos/demo-NonSI.cast';
+                            ];
+                        ];
+
+                    Time => tab
+                        vignette :direction, [
+                            article [ markdown q:to/END/;
+                                #### 13. Time & Date
+
+                                  - `42s` SI form
+                                  - `^<23:59:59>` HH:MM:SS form
+                                  - string to `.Date` and `.DateTime`
+                                  - `sleep x` seconds
+                                  - `say "\a"` alarm bell
+
+                                END
+                                code-note 'a calculator that sleeps';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Time.cast';
+                            ];
+                        ];
+
+                    Data => tab
+                        vignette :direction, [
+                            article [ markdown q:to/END/;
+                                #### 14. Data
+
+                                  - shortform for bits `1b` and bytes `1B`
+                                  - power of 2 data prefixes `kib, MiB, BiB`
+                                  - datarate, e.g. `^<25 Mbps>`
+
+                                END
+                                code-note 'works well with LLM queries';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Data.cast';
+                            ];
+                        ];
+
+                    Currency => tab
+                        vignette :direction, [
+                            article [ markdown q:to/END/;
+                                #### 15. Currency
+
+                                  - `US$25`, `C$20`, `£15`, `10€` currency
+
+                                END
+                                code-note '~20 popular currencies included';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Currency.cast';
+                            ];
+                        ];
+
+                    Angles => tab
+                        vignette :direction, [
+                            article [ markdown q:to/END/;
+                                #### 16. Angles
+
+                                  - `30.2º` shortform for degrees
+                                  - `2rad` radians too
+                                  - `sin 30º` trigonometry
+                                  - `^<30º10'5">` degrees, minutes, seconds
+                                  - `cmp` for comparison
+
+                                END
+                                code-note 'degrees, radians, grads';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Angles.cast';
                             ];
                         ];
 
                     Conversions => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 13. Conversions
+                                #### 17. Conversions
 
                                 Use the `.in: ''` operation to convert units.
 
@@ -331,17 +393,72 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                   - `^<4 in> .in: 'm'` length
 
                                 END
-                                code-note 'a large collection of US, UK and SI units is provided';
+                                code-note 'items must have the same dimensions';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Conversions.cast';
+                                asciinema '/static/demos/demo-Conversions.cast';
+                            ];
+                        ];
+
+                    Errors => tab
+                        vignette :direction, [
+                            article [ markdown q:to/END/;
+                                #### 18. Measurement Uncertainty
+
+                                  - use `~` (or `±`) to specify the error
+                                  - works with short form `10m~10%`
+                                  - and general form `^<5 m ~ 0.2>`
+                                  - use `%` to denote relative error
+
+                                END
+                                code-note 'errors are propagated through calcs';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Errors.cast';
+                            ];
+                        ];
+
+
+                    Constants => tab
+                        vignette :direction, [
+                            article [ markdown q:to/END/;
+                                #### 19. Constants
+
+                                  - `c` speed of light (m/s)
+                                  - `g` acceleration due to gravity (m/s^2)
+                                  - `Na` avogadro number (molecules in one mole)
+
+                                END
+                                code-note '~20 physical constants included';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Constants.cast';
+                            ];
+                        ];
+
+
+                    Colors => tab
+                        vignette :direction, [
+                            article [ markdown q:to/END/;
+                                #### 20. Colors
+
+                                  - comprehensive name library
+                                  - math operations
+                                  - hsv, hex, cmyk conversion
+                                  - `.lighten`, `.darken`, `.invert`, `.saturate`, `.rotate` adjustments
+
+                                END
+                                code-note 'X11, CSS3 and xkcd';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Colors.cast';
                             ];
                         ];
 
                     Sequences => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 14. Sequences
+                                #### 21. Sequences
 
                                   - `xx` denotes repetition
                                   - `..` specifies a range
@@ -356,14 +473,14 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'infinite lazy sequences';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Sequences.cast';
+                                asciinema '/static/demos/demo-Sequences.cast';
                             ];
                         ];
 
                     Bases => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 15. Bases
+                                #### 22. Bases
 
                                   - `0b` binary
                                   - `0o` octal
@@ -376,14 +493,30 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'power tools for coders';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Bases.cast';
+                                asciinema '/static/demos/demo-Bases.cast';
+                            ];
+                        ];
+
+                    Bitwise => tab
+                        vignette :direction, [
+                            article [ markdown q:to/END/;
+                                #### 23. Bitwise Operations
+
+                                  - `+&`, `+|`, `+^` bitwise AND, OR, XOR/NOT
+                                  - `+<`, `+>` bitwise shift left, right
+
+                                END
+                                code-note '';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Bitwise.cast';
                             ];
                         ];
 
                     Unicode => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 16. Unicode
+                                #### 24. Unicode
 
                                   - `.ord` codepoint value
                                   - `.uniname` unicode name
@@ -394,44 +527,23 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'strings use unicode graphemes';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Unicode.cast';
+                                asciinema '/static/demos/demo-Unicode.cast';
                             ];
                         ];
 
                     Theory => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 17. Number Theory
+                                #### 25. Number Theory
 
                                 `abundant-number, are-coprime, chinese-remainder, continued-fraction, convergents, cousin-primes, deficient-number, digit-count, divisor-sigma, divisors, euler-phi, factor-gaussian-integer, factor-integer, factorial, fibonacci, from-continued-fraction, from-number-expansion, gcd-gaussian, gcd-rational, infix:<=>, integer-digits, integer-exponent, integer-partitions, is-abundant-number, is-composite, is-deficient-number, is-happy-number, is-harshad-number, is-perfect-number, is-prime, is-prime-gaussian, is-prime-power, is-quadratic-irrational, kronecker-delta, lcm-gaussian, lcm-rational, mangold-lambda, modular-inverse, multiplicative-order, next-prime, number-expansion, perfect-number, phi-number-system, polygonal-number, power-mod, prime, primitive-root-list, quotient, quotient-reminder, random-prime, real-digits, related-primes, sexy-primes, trial-factor-integer, twin-primes`
                                 END
                                 code-note 'modelled on Wolfram Language';
                             ];
                             article [
-                                asciidemo '/static/demos/demo-Theory.cast';
+                                asciinema '/static/demos/demo-Theory.cast';
                             ];
                         ];
-
-                    Miscellaneous => tab
-                        vignette :direction, [
-                            article [ markdown q:to/END/;
-                                #### 18. Miscellaneous
-
-                                  - `c<>` CSS colors, functions and math
-                                  - `+&`, `+|`, `+^` bitwise AND, OR, XOR/NOT
-                                  - `+<`, `+>` bitwise shift lef, right
-                                  - `c`, `g`, `Na` constants
-
-                                Approx. 20 built-in constants.
-                                END
-                                code-note 'install and try it yourself!';
-                            ];
-                            article [
-                                asciidemo '/static/demos/demo-Misc.cast';
-                            ];
-                        ];
-
-
                 ];
             ];
 
@@ -439,7 +551,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
 
                 ## Get Started
 
-                CragCLI is Free Open Source Software built on the Raku REPL. It provides a unified CLI to several Raku modules. No Ads Ever.
+                CragCLI is Open Source Software written in Raku, provided under Artistic License 2.0.
 
                 ---
 

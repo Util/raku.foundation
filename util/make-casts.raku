@@ -5,10 +5,19 @@ use Data::Dump::Tree;
 constant $path = "../static/demos/";
 constant $from = "demo-script";
 constant $freq = '0.7';  #was 1.0
-constant $last = 20;
-#constant $mask-sh = ().SetHash;
-constant $mask-sh = (^$last).SetHash;
-$mask-sh{6}:delete;
+
+my $last = 30; #much too large
+my $dry-run = 0;
+my $one-only = 10;
+
+my $mask-sh = ().SetHash;
+if ! $dry-run {
+    $mask-sh = (^$last).SetHash;
+
+    if $one-only {
+        $mask-sh{$one-only}:delete;
+    }
+}
 
 my @lines = "$path$from".IO.lines;
 
@@ -35,7 +44,10 @@ for @lines -> $line {
     %sections{$current}.push($line) if $current;
 }
 
-#ddt @sections; die;
+if $dry-run {
+    ddt @sections;
+    die "add +1 for text";
+}
 
 ## Common head and tail
 
