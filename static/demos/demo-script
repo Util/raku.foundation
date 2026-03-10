@@ -78,6 +78,7 @@ $_ * 7              #topic
 @a = (1,2,3,4)      #list of numbers
 [1 2 3 4]
 @a[2]               #indexing
+3
 @s = <a b c d>      #list of strings
 [a b c d]
 
