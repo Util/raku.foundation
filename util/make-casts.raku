@@ -8,7 +8,7 @@ constant $freq = '0.4';  #was 1.0
 
 my $last = 30; #much too large
 my $dry-run = 0;
-my $one-only = 6;
+my $one-only = 17;
 
 my $mask-sh = ().SetHash;
 if ! $dry-run {
