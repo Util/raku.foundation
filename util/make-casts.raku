@@ -8,15 +8,16 @@ constant $freq = '0.4';  #was 1.0
 
 my $last = 30; #much too large
 my $dry-run = 0;
-my $one-only = 17;
+my $one-only;  #set to index(s), Nil means do all
+
+#eg agg demo-Arithmetic.cast demo-Arithmetic.gif --theme nord
+my $agg = 1;
 
 my $mask-sh = ().SetHash;
-if ! $dry-run {
-    $mask-sh = (^$last).SetHash;
 
-    if $one-only {
-        $mask-sh{$one-only}:delete;
-    }
+with $one-only {
+    $mask-sh = (^$last).SetHash;
+    $mask-sh{$one-only}:delete;
 }
 
 my @lines = "$path$from".IO.lines;
@@ -46,13 +47,13 @@ for @lines -> $line {
 
 if $dry-run {
     ddt @sections;
-    die "add +1 for text";
+    die "^^ this is the full list, add +1 for website text";
 }
 
 ## Common head and tail
 
 my $head = q:to/END/;   #note idle_time_limit was 1.0
-{"version":3,"term":{"cols":116,"rows":36,"type":"xterm-256color","theme":{"fg":"#ffffff","bg":"#1e1e1e","palette":"#000000:#990000:#00a600:#999900:#0000b3:#b300b3:#00a6b3:#bfbfbf:#666666:#e60000:#00d900:#e6e600:#0000ff:#e600e6:#00e6e6:#e6e6e6"}},"timestamp":1770210678,"idle_time_limit":0.7,"env":{"SHELL":"/bin/zsh"}}
+{"version":3,"term":{"cols":64,"rows":12,"type":"xterm-256color","theme":{"fg":"#ffffff","bg":"#1e1e1e","palette":"#000000:#990000:#00a600:#999900:#0000b3:#b300b3:#00a6b3:#bfbfbf:#666666:#e60000:#00d900:#e6e600:#0000ff:#e600e6:#00e6e6:#e6e6e6"}},"timestamp":1770210678,"idle_time_limit":0.3,"env":{"SHELL":"/bin/zsh"}}
 [0.000, "o", "\r\u001b[0m\u001b[27m\u001b[24m\u001b[J~ > \u001b[K\u001b[?2004h"]
 [0.524, "o", "c"]
 [0.203, "o", "r"]
@@ -73,8 +74,9 @@ my $tail = q:to/END/;
 [1.000, "o", "\r\n"]
 END
 
-sub line-out($s) {
-    my $rand = $freq.rand.round(0.001).fmt('%.3f');
+sub line-out($s, :$drop) {
+    my $rand = (0.001).fmt('%.3f');
+    $rand = $freq.rand.round(0.001).fmt('%.3f') unless $drop;
     qq`[$rand, "o", "$s"]`;
 }
 
@@ -96,8 +98,7 @@ sub line-run($line, :$auto, :$prompt) {
     say $line;
 
     my $stanza;
-    ##iamerejh
-    #drip when prompt line
+
     if $prompt {
         $stanza ~= .&line-out given '> ';
         $stanza ~= "\n";
@@ -117,7 +118,7 @@ sub line-run($line, :$auto, :$prompt) {
 
 sub cast-out($section is copy, @script, :$auto) {
     $section ~~ s/<.ws> '(!auto)'//;
-    say my $to = "demo-$section.cast";
+    say my $cast = "demo-$section.cast";
 
     my $out-str = $head;
 
@@ -129,7 +130,14 @@ sub cast-out($section is copy, @script, :$auto) {
 
     $out-str ~= $tail.trim;
 
-    spurt "$path$to", $out-str;
+    spurt "$path$cast", $out-str;
+
+    if $agg {
+        my $gif = "demo-$section.gif";
+        my $cmd = "agg $path$cast $path$gif --theme nord";
+
+        say qqx`$cmd`;
+    }
 }
 
 # output all sections

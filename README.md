@@ -34,13 +34,16 @@ Make a directory structure like this:
 
 ```
 my_webapp/
+├── Caddyfile
 ├── docker-compose.yml
-└── Caddyfile
+└── update-sites.sh
 ```
 
-Populate the files from the examples given.
+Populate the files from the template examples given (single-site or multi-site).
 
-Point your domain name to this IP address (ie. match the Caddyfile).
+Point your domain name(s) to this IP address (ie. match the Caddyfile).
+
+### Manual Restart
 
 Then go:
 
@@ -48,6 +51,15 @@ Then go:
 [sudo docker-compose down]
 [sudo docker-compose pull]
 sudo docker-compose up -d
+```
+
+### Auto Restart
+
+To have the server poll quay.io for a new image every 15mins (the image is made by GitHub action on commit to main), then adjust the update-sites.sh and go:
+
+```
+sudo crontab -e
+*/15 * * * * /my_webapp/update-sites.sh >> /var/log/update-sites.log 2>&1
 ```
 
 ## Roadmap

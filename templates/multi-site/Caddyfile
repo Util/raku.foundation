@@ -1,0 +1,7 @@
+harcstack.org {
+    reverse_proxy harcstack-org:3000
+}
+
+cragcli.info {
+    reverse_proxy cragcli-info:3000
+}
