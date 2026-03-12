@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   harcstack-org:
     image: quay.io/librasteve/harcstack-org:latest

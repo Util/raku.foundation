@@ -3,8 +3,8 @@
 #/path/to/your/docker-compose-folder
 cd /my_webapp || exit
 
-docker-compose pull
-docker-compose up -d
+docker compose pull
+docker compose up -d
 docker image prune -f
 
 #sudo crontab -e
