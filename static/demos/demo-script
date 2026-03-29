@@ -243,7 +243,7 @@ US$0.01 / 1s        #charge rate
 
 ##Constants
 c                   #speed of light
-g                   #accn due to grabity
+g                   #accn due to gravity
 Na                  #Avogadro number
 
 ##Colors
