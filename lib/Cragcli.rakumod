@@ -666,7 +666,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                 code-note 'using distance, time and speed';
                             ];
                             article [
-                                asciinema '/static/demos/demo-Formula1-Straight.cast';
+                                asciinema '/static/demos/demo-Formula1-Kinematic.cast';
                             ];
                         ];
 
@@ -697,7 +697,10 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
 
                                 Energy and power take.
 
-                                  -
+                                  - Explosive energy gain over a short straight
+                                  - Massive power output sustained for seconds
+                                  - Tiny fuel mass delivers huge energy increase
+                                  - Relentless drag consumes most of the energy
 
                                 END
                                 code-note 'using energy and power';
@@ -712,12 +715,12 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                             article [ markdown q:to/END/;
                                 #### Formula1 - Formulae
 
-                                Energy and power take.
+                                LLM Queries can be used to look up forgotten formulae.
 
-                                  -
+                                Here are some from our story with a useful mantra.
 
                                 END
-                                code-note 'using energy and power';
+                                code-note 'most popular LLM services supported';
                             ];
                             article [
                                 asciinema '/static/demos/demo-Formula1-Formulae.cast';
