@@ -4,20 +4,20 @@ use Data::Dump::Tree;
 
 constant $path = "../static/demos/";
 constant $from = "demo-script";
-constant $freq = '0.4';  #was 1.0
+constant $freq = '0.4';  #1.0 is ponderous, 0.1 is lightning fast
 
-my $last = 30; #much too large
+my $last = 40; #much too large
 my $dry-run = 0;
-my $one-only;  #set to index(s), Nil means do all
+my $one-only = 10;  #set to index(s), Nil means do all
 
 #eg agg demo-Arithmetic.cast demo-Arithmetic.gif --theme nord
 my $agg = 1;
 
-my $mask-sh = ().SetHash;
+my $mask = ().SetHash;
 
 with $one-only {
-    $mask-sh = (^$last).SetHash;
-    $mask-sh{$one-only}:delete;
+    $mask = (^$last).SetHash;
+    $mask{$one-only}:delete;
 }
 
 my @lines = "$path$from".IO.lines;
@@ -88,7 +88,7 @@ sub drip($line, $stanza is rw) {
 }
 
 sub drop($line, $stanza is rw) {
-    $stanza ~= .&line-out ~ "\n" given $line;
+    $stanza ~= .&line-out(:drop) ~ "\n" given $line;
     $stanza ~= .&line-out given '\r\n';
     $stanza ~= "\n";
     $stanza;
@@ -125,7 +125,8 @@ sub cast-out($section is copy, @script, :$auto) {
     my $prompt = 1;
     for @script -> $line {
         $prompt = $++ %% 2 unless $auto;
-        $out-str ~= $line.split('#')[0].trim.&line-run(:$auto, :$prompt).trim ~ "\n";
+        $out-str ~= $line.trim.&line-run(:$auto, :$prompt).trim ~ "\n";
+#        $out-str ~= $line.split('#')[0].trim.&line-run(:$auto, :$prompt).trim ~ "\n";   #iamerejh
     }
 
     $out-str ~= $tail.trim;
@@ -143,7 +144,7 @@ sub cast-out($section is copy, @script, :$auto) {
 # output all sections
 for @sections -> $section {
     my $this = $++;
-    next if $this ∈ $mask-sh;
+    next if $this ∈ $mask;
 
     my $auto = not $section ~~ /'!auto'/;
     say "$this: $section; auto: $auto";

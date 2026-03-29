@@ -64,8 +64,8 @@ sudo crontab -e
 
 ## Roadmap
 
-The following improvements are planned:
-- add cron job & script to have the server poll for new releases (and to download and restart)
+ - Fractions (boring)
+ - Infinity (boring?)
 
 ---
 

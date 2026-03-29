@@ -9,18 +9,17 @@ asciinema play -q -s 2 demoN.cast
 (2+3) * 4           #parentheses
 -0.1-0.2            #negatives
 1.23e4 / 23         #divide
-(7/2) % 3           #modulo (%)
+(7/2) % 3           #modulo
 
 ##Functions
 3%                  #percent
 1/4                 #reciprocal
 5!                  #factorial
-sqrt 6              #sqrt
+sqrt 6              #square root
 3**2                #square
 3**3                #cube
 2**64               #power
 8**(1/3)            #cube root
-
 
 ##Logs (!auto)
 log10 1000          #log (base 10)
@@ -29,8 +28,8 @@ log10 1000          #log (base 10)
 1000
 log e               #natural log & e
 1
-exp $_              #exponetial
-2.718
+exp $_              #exponential
+2.72
 e ** (i * π)        #Euler's identity
 -1+0i
 
@@ -38,20 +37,42 @@ e ** (i * π)        #Euler's identity
 cos pi              #trigonometry
 -1
 acos $_             #inverse (arc-cos)
-3.142
+3.14
 tanh Inf            #hyperbolics
 1
 atanh $_            #inverse (arc-sinh)
 Inf
 sinh 3i+4           #complex
--27.017+3.854i
+-27.02+3.85i
+
+##Fractions (!auto)
+1/3 * 3             #exact math
+1
+1/2                 #a fraction -> decimal result
+0.5
+(1/2) .nude         #get numerator, denominator
+(1 2)
+0.7 .nude           #decimals are fractions too
+(7 10)
+1e-1/-2e0           #exponential, signs ok
+-0.05
+1/2+1/3+1/4         #fraction math
+1.08
+f 1                 #enable fraction mode
+True
+1/3 * 3             #shows results as fractions
+<1/1>
+1/3 * 4             #proper fractions (note the ^)
+^<1 1/3>
+^<9 3/4> + 42       #proper math
+^<51 3/4>
 
 ##Complex (!auto)
-$x = -i             #Imaginary
+$x = -i             #imaginary
 0-1i
-$y = 3+4i           #Complex
+$y = 3+4i           #complex
 3+4i
-$y.abs              #Magnitude
+$y.abs              #absolute magnitude
 5
 $x+$y
 3+3i
@@ -59,7 +80,7 @@ $x*$y
 4-3i
 sqrt $y
 2+1i
-$y.polar        #Polar Co-ords
+$y.polar            #polar coordinates
 (5 0.9272952180016122)
 
 ##Random
@@ -73,11 +94,11 @@ $x=42
 42
 $x/7                #named memory
 6
-$_ * 7              #topic
+$_ * 7              #topic (last answer)
 42
 @a = (1,2,3,4)      #list of numbers
 [1 2 3 4]
-@a[2]               #indexing
+@a[2]               #index
 3
 @s = <a b c d>      #list of strings
 [a b c d]
@@ -89,8 +110,8 @@ $_ * 7              #topic
 3+4i                #Complex
 Inf                 #Infinity
 <2/3> * <3/4>       #exact fractions
-1.424e-2 * <270/7>  #mixing
-^<1 googol light-year> #bigness
+1.424e-2 * <270/7>  #type mixing
+^<1 googol ly>      #arbitrary precision
 
 ##Rounding (!auto)
 floor pi            #floor
@@ -98,17 +119,35 @@ floor pi            #floor
 ceiling pi          #ceiling
 4
 abs pi              #absolute
-3.142
+3.14
 sqrt 6              #default
-2.449
+2.45
 r 0.1; sqrt 6       #use r ... to set
 2.4
 r Nil; sqrt 6       #float64 rounding
 2.449489742783178
-r 1e-17; 1/11
+r 1e-17; 1/11       #same as r Nil
 0.09090909090909091
 r(0.01); ^<pi mph> / ^<e knots>
 1①
+
+##Infinity (!auto)
+42/0                #divide by zero
+Inf
+<42/0>              #zero denominator fraction
+Inf
+1 / Inf             #inversion
+0
+1 + Inf             #mixed math
+Inf
+Inf + Inf           #addition
+Inf
+Inf * Inf           #multiplication
+Inf
+Inf - Inf           #subtraction
+NaN
+Inf / Inf           #division
+NaN
 
 ##LLM (!auto)
 ?<what is an elephant>  #text query
@@ -137,24 +176,24 @@ An elephant is a large, gray mammal with a trunk and tusks.
 40J
 
 ##NonSI
-^<4 m>             #alternate for 4m
+^<4 m>              #alternate for 4m
 ^<4 in>             #general syntax
 ^<4 inch>           #synonym
-^<4 inchs>          #plural
+^<4 inchs>          #plurals
 ^<4 sq ft>          #Area
 ^<4 cu yards>       #Volume
-^<4 cu yards> / ^<4 sq ft>
-^<4 million metres>
-(^<4 million metres>).rebase
-(^<4 million metres>).rebase.norm
-^<1 gallon> / ^<1 pint>
+^<4 cu yards> / ^<4 sq ft>  #unit math
+^<4 million metres>         #common terms
+^<4 million feet> .rebase   #in SI base units
+^<4 million m> .norm        #normalize SI prefix
+^<1 pint> in 'oz'
 
 ##Time (!auto)
 42s ~10%
 42s ±4.2
 ^<23:59:59>         #time
 23:59:59
-'2015-11-24'.Date.year   #date
+'2015-11-24'.Date.year #date
 2015
 DateTime.now.hh-mm-ss
 13:56:23
@@ -166,13 +205,16 @@ DateTime.now.hh-mm-ss
 512GiB              #disk
 ?^<datarate of a 4k movie stream in Mbps>
 ?^<size of a 4k movie in GiB>
-^<25 GiB> / ^<25 Mbps>
+25 GiB / ^<25 Mbps> #data math
 
 ##Currency
-US$25               #currency
-C$20
-£15
-10€
+US$42               #US dollars
+42€                 #Euro
+C$42                #Canada dollars
+£42                 #GB pounds
+^<42 GBP>           #over 20 currencies
+£20 in 'USD'        #conversion
+US$0.01 / 1s        #charge rate
 
 ##Angles
 30.2º               #degrees shortform
@@ -182,15 +224,15 @@ C$20
 ^<100 grad> cmp ^<90 deg>
 
 ##Conversions (!auto)
-£20  .in: 'USD'     #currency
-27.053USD
-39ºC .in: 'ºF'      #temperature
+£20 in 'USD'        #currency
+27.05USD
+39ºC in 'ºF'        #temperature
 102.2°F
-10N  .in: 'lb'      #weight
-2.248lb
-^<4 in> .in: 'm'    #length
-0.102m
-(^<13.8 gigayears> * c).in: <megaparsec>
+10N in 'lb'         #weight
+2.25lb
+^<4 in> in 'm'      #length
+0.10m
+(^<13.8 gigayears> * c) in <megaparsec>
 4235megaparsec
 
 ##Errors
@@ -232,7 +274,7 @@ $r=c<red>;$b=c<blue>;$r+$b
 0x2A                #hex
 0d42                #decimal
 0rXXXXII            #roman
-42.base(23)         #any base
+"42".parse-base(12) #any base
 0xFF + 0b1
 
 ##Bitwise
@@ -254,3 +296,81 @@ is-prime(^6)
 (False False True True False True)
 is-happy-number 2026
 True
+
+##Formula1-Straight (!auto)
+$d = 305m  # length of sector of Monza straight
+305m
+$t = 5.2s  # time spent on full throttle
+5.2s
+$u = ^<260 km/h> # entry speed
+260km/h
+$u in 'mph'
+161.56mph
+$v = ^<328 km/h> # exit speed
+328km/h
+$v in 'mph'
+203.81mph
+$a = ($v - $u) / $t
+3.63m/s^2
+$s = $u*$t + 1/2 * $a * $t**2 # sanity check
+424.67m
+$a / g     # drag dominates
+0.37①
+
+##Formula1-Drag (!auto)
+$u = ^<260 km/h>
+260km/h
+$v = ^<328 km/h>
+328km/h
+$mass = 798kg
+798kg
+$rho = ^<1.225 kg/m^3>     # air density
+1.225kg/m^3
+$CdA = ^<1.1 m^2>          # drag coefficient * area
+1.1m^2
+$engine-force = 14000N     # hybrid power unit
+14000N
+$drag-entry = 0.5 * $rho * $CdA * $u**2
+3510N
+$entry-force = $engine-force - $drag-entry
+10500N
+$a = $entry-force / $mass
+13.14m/s^2
+$a / g
+1.34①
+$drag-exit = 0.5 * $rho * $CdA * $v**2
+5590N
+$exit-force = $engine-force - $drag-exit
+8410N
+$a = $exit-force / $mass
+10.54m/s^2
+$a / g
+1.07①
+
+##Dragster math
+$t = ?^<standing quarter mile record in s>
+9.03s
+$a = 2 * ^<0.25 mile> / $t ** 2
+8.28m/s^2
+$a / g
+0.84①
+
+##Energy
+#$m = 25kg
+#$f = $m * $a
+#$pe = f × s
+#$ke1 = (1/2) × m × u²
+#$ke2 = (1/2) × m × v²
+#$Δke = ke2 - ke1
+#(pe cmp Δke).say
+
+##Formulas
+?<formula u from d and t show only math symbols>
+u = d / t
+?<formula v from u, a and t show only math symbols>
+v = u + at
+?<formula s from u, a and t show only math symbols>
+s = ut + (1/2)at²
+?<formula get acceleration from distance and time show only math symbols>
+a = 2d / t²
+

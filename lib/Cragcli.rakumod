@@ -66,7 +66,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Arithmetic => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 1. Arithmetic
+                                #### Arithmetic
 
                                   - `+`add,`-`subtract, `*`multiply, `/`divide
                                   - `()` parentheses (bidmas precedence)
@@ -85,7 +85,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Functions => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 2. Functions
+                                #### Functions
 
                                   - `x%` percent
                                   - `1/x` reciprocal
@@ -106,7 +106,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Logs => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 3. Logarithms & Exponentials
+                                #### Logarithms & Exponentials
 
                                   - `log10 x` base `10` logarithms
                                   - `log x` natural logarithms (base `e`)
@@ -124,7 +124,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Trig => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 4. Trigonometric & Hyperbolic
+                                #### Trigonometric & Hyperbolic
 
                                   - `sin x`, `cos x`, `tan x` trigonometry
                                   - `asin x`, `acos x`, `atan x` inverse
@@ -140,10 +140,29 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                             ];
                         ];
 
+                    Fractions => tab
+                        vignette :direction<rtl>, [
+                            article [ markdown q:to/END/;
+                                #### Fractions
+
+                                  - no rounding, exact math
+                                  - decimals are fractions
+                                  - proper fractions e.g. `^<9 3/4>`
+                                  - defaults to decimal results
+                                  - fraction mode `f 1` for fraction results
+
+                                END
+                                code-note 'fractions are built-in';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Fractions.cast';
+                            ];
+                        ];
+
                     Complex => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 5. Complex
+                                #### Complex
 
                                   - `i` Imaginary
                                   - `3+4i` Complex
@@ -162,7 +181,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Random => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 6. Random
+                                #### Random
 
                                   - `rand` random (0 <= x < 1)
                                   - `10.rand` random in range (0 <= x < 10)
@@ -181,7 +200,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Memory => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 7. Memory
+                                #### Memory
 
                                 Use `$` or `@` to denote a named variable.
 
@@ -202,7 +221,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Types => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 8. Types
+                                #### Types
 
                                 A comprehensive set of number types is included.
 
@@ -226,20 +245,42 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Rounding => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### 9. Rounding
+                                #### Rounding
 
                                 Rounding precision is controlled by the `r()` function.
 
                                   - `floor`, `ceiling` and `abs` functions
-                                  - default rounding is `0.001` (3 digits)
+                                  - default rounding is `0.01` (2 digits)
                                   - `r 0.1` is 1 digit, `r 0.00001` is 5 digits
                                   - `r Nil` turns off rounding
+                                  - mode controls  like r apply on subsequent lines
 
                                 END
                                 code-note 'full internal precision';
                             ];
                             article [
                                 asciinema '/static/demos/demo-Rounding.cast';
+                            ];
+                        ];
+
+
+                    Infinity => tab
+                        vignette :direction<rtl>, [
+                            article [ markdown q:to/END/;
+                                #### Infinity
+
+                                  - `Inf` for Infinity
+                                  - e.g. on divide by zero operation
+                                  - `1/Inf` -> `0`
+                                  - `Inf+Inf` -> `Inf`
+                                  - `NaN` for Not a Number
+                                  - `Inf-Inf` -> `NaN`
+
+                                END
+                                code-note 'no more divide by zero errors';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Infinity.cast';
                             ];
                         ];
                 ];
@@ -251,7 +292,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     LLM => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 10. LLM
+                                #### LLM
 
                                 Grab AI info directly into your calculations.
 
@@ -270,7 +311,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     SIUnits => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 11. SI Units
+                                #### SI Units
 
                                 Just write SI units naturally:
 
@@ -290,7 +331,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     NonSI => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 12. Non-SI Units
+                                #### Non-SI Units
 
                                 General syntax is `^<value units>`.
 
@@ -313,7 +354,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Time => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 13. Time & Date
+                                #### Time & Date
 
                                   - `42s` SI form
                                   - `^<23:59:59>` HH:MM:SS form
@@ -332,7 +373,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Data => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 14. Data
+                                #### Data
 
                                   - shortform for bits `1b` and bytes `1B`
                                   - power of 2 data prefixes `kib, MiB, BiB`
@@ -349,7 +390,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Currency => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 15. Currency
+                                #### Currency
 
                                   - `US$25`, `C$20`, `£15`, `10€` currency
 
@@ -364,7 +405,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Angles => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 16. Angles
+                                #### Angles
 
                                   - `30.2º` shortform for degrees
                                   - `2rad` radians too
@@ -383,14 +424,14 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Conversions => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 17. Conversions
+                                #### Conversions
 
-                                Use the `.in: ''` operation to convert units.
+                                Use the `in` operator to convert units.
 
-                                  - `£20  .in: 'US$'` currency
-                                  - `39ºC .in: 'ºF'` temperature
-                                  - `10N  .in: 'lb'` weight
-                                  - `^<4 in> .in: 'm'` length
+                                  - `£20 in 'US$'` currency
+                                  - `39ºC in 'ºF'` temperature
+                                  - `10N in 'lb'` weight
+                                  - `^<4 in> in 'm'` length
 
                                 END
                                 code-note 'items must have the same dimensions';
@@ -403,7 +444,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Errors => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 18. Measurement Uncertainty
+                                #### Measurement Uncertainty
 
                                   - use `~` (or `±`) to specify the error
                                   - works with short form `10m~10%`
@@ -422,7 +463,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Constants => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 19. Constants
+                                #### Constants
 
                                   - `c` speed of light (m/s)
                                   - `g` acceleration due to gravity (m/s^2)
@@ -440,7 +481,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Colors => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 20. Colors
+                                #### Colors
 
                                   - comprehensive name library
                                   - math operations
@@ -458,7 +499,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Sequences => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 21. Sequences
+                                #### Sequences
 
                                   - `xx` denotes repetition
                                   - `..` specifies a range
@@ -480,7 +521,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Bases => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 22. Bases
+                                #### Bases
 
                                   - `0b` binary
                                   - `0o` octal
@@ -500,7 +541,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Bitwise => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 23. Bitwise Operations
+                                #### Bitwise Operations
 
                                   - `+&`, `+|`, `+^` bitwise AND, OR, XOR/NOT
                                   - `+<`, `+>` bitwise shift left, right
@@ -516,7 +557,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Unicode => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 24. Unicode
+                                #### Unicode
 
                                   - `.ord` codepoint value
                                   - `.uniname` unicode name
@@ -534,7 +575,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Theory => tab
                         vignette :direction, [
                             article [ markdown q:to/END/;
-                                #### 25. Number Theory
+                                #### Number Theory
 
                                 `abundant-number, are-coprime, chinese-remainder, continued-fraction, convergents, cousin-primes, deficient-number, digit-count, divisor-sigma, divisors, euler-phi, factor-gaussian-integer, factor-integer, factorial, fibonacci, from-continued-fraction, from-number-expansion, gcd-gaussian, gcd-rational, infix:<=>, integer-digits, integer-exponent, integer-partitions, is-abundant-number, is-composite, is-deficient-number, is-happy-number, is-harshad-number, is-perfect-number, is-prime, is-prime-gaussian, is-prime-power, is-quadratic-irrational, kronecker-delta, lcm-gaussian, lcm-rational, mangold-lambda, modular-inverse, multiplicative-order, next-prime, number-expansion, perfect-number, phi-number-system, polygonal-number, power-mod, prime, primitive-root-list, quotient, quotient-reminder, random-prime, real-digits, related-primes, sexy-primes, trial-factor-integer, twin-primes`
                                 END
@@ -606,4 +647,43 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
 
                   5. If your calculations outgrow the crag app, you can use the underlying crag modules in Raku code.
                 MDEND
+
+            div [
+                p :style('margin-bottom: unset;'), b em 'some stories: ';
+                tabs [
+                    Formula1-Straight => tab
+                        vignette :direction<rtl>, [
+                            article [ markdown q:to/END/;
+                                #### Formula1 Straight Line
+
+                                 - You start already insanely fast (~260 km/h)
+                                 - Still gain ~70 km/h in just ~5 seconds
+                                 - Acceleration is “only” ~0.37g — because at those speeds, aerodynamic drag is brutal
+                                 - Distance sanity check is ±30% - real-world is non-linear
+
+                                END
+                                code-note 'use LLM to grab real-world values';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Formula1-Straight.cast';
+                            ];
+                        ];
+                    Formula1-Drag => tab
+                        vignette :direction<rtl>, [
+                            article [ markdown q:to/END/;
+                                #### Formula1 Acceleration
+
+
+
+                                END
+                                code-note 'use LLM to grab real-world values';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Formula1-Drag.cast';
+                            ];
+                        ];
+                ];
+            ];
         ];
+
+
