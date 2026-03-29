@@ -297,16 +297,16 @@ is-prime(^6)
 is-happy-number 2026
 True
 
-##Formula1-Straight (!auto)
-$d = 305m  # length of sector of Monza straight
+##Formula1-Kinematic (!auto)
+$d = 305m       # length of sector of Monza straight
 305m
-$t = 5.2s  # time spent on full throttle
+$t = 5.2s       # time spent on full throttle
 5.2s
-$u = ^<260 km/h> # entry speed
+$u = ^<260 km/h>    # entry speed
 260km/h
 $u in 'mph'
 161.56mph
-$v = ^<328 km/h> # exit speed
+$v = ^<328 km/h>    # exit speed
 328km/h
 $v in 'mph'
 203.81mph
@@ -318,53 +318,48 @@ $a / g     # drag dominates
 0.37①
 
 ##Formula1-Drag (!auto)
-$u = ^<260 km/h>
-260km/h
-$v = ^<328 km/h>
-328km/h
-$mass = 798kg
+$mass = 798kg               # regulation weight
 798kg
-$rho = ^<1.225 kg/m^3>     # air density
+$rho = ^<1.225 kg/m^3>      # air density
 1.225kg/m^3
-$CdA = ^<1.1 m^2>          # drag coefficient * area
+$CdA = ^<1.1 m^2>           # drag coefficient * area
 1.1m^2
-$engine-force = 14000N     # hybrid power unit
+$engine-force = 14000N      # hybrid power unit
 14000N
-$drag-entry = 0.5 * $rho * $CdA * $u**2
+$drag = 0.5 * $rho * $CdA * $u**2
 3510N
-$entry-force = $engine-force - $drag-entry
+$net-force = $engine-force - $drag
 10500N
-$a = $entry-force / $mass
+$a = $net-force / $mass     # from F=ma
 13.14m/s^2
 $a / g
 1.34①
-$drag-exit = 0.5 * $rho * $CdA * $v**2
-5590N
-$exit-force = $engine-force - $drag-exit
-8410N
-$a = $exit-force / $mass
-10.54m/s^2
-$a / g
-1.07①
 
-##Dragster math
-$t = ?^<standing quarter mile record in s>
-9.03s
-$a = 2 * ^<0.25 mile> / $t ** 2
-8.28m/s^2
-$a / g
-0.84①
+##Formula1-Energy (!auto)
+$mass = 798kg               # regulation weight
+798kg
+$t = 5.2s                   # time spent on full throttle
+5.2s
+$u = ^<260 km/h>            # entry speed
+260km/h
+$e1 = (1/2 * $mass * $u**2).norm   # entry energy
+2.08MJ
+$v = ^<328 km/h>            # exit speed
+328km/h
+$e2 = (1/2 * $mass * $v**2).norm   # exit energy
+3.31MJ
+$de = $e2 - $e1             # delta energy
+1.23MJ
+($de / $t).norm             # power over the straight
+237kW
+$fuel-energy = ^<44e6 J/kg> # gasoline approx
+4.40e+07J/kg
+$de / $fuel-energy          # $fuel used
+0.03kg
+$_ in 'oz'
+0.99oz
 
-##Energy
-#$m = 25kg
-#$f = $m * $a
-#$pe = f × s
-#$ke1 = (1/2) × m × u²
-#$ke2 = (1/2) × m × v²
-#$Δke = ke2 - ke1
-#(pe cmp Δke).say
-
-##Formulas
+##Formula1-Formulae (!auto)
 ?<formula u from d and t show only math symbols>
 u = d / t
 ?<formula v from u, a and t show only math symbols>

@@ -263,7 +263,6 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                             ];
                         ];
 
-
                     Infinity => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
@@ -654,7 +653,9 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                     Formula1-Straight => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### Formula1 Straight Line
+                                #### Formula1 - Kinematics
+
+                                A kinematic perspective.
 
                                  - You start already insanely fast (~260 km/h)
                                  - Still gain ~70 km/h in just ~5 seconds
@@ -662,24 +663,64 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                  - Distance sanity check is ±30% - real-world is non-linear
 
                                 END
-                                code-note 'use LLM to grab real-world values';
+                                code-note 'using distance, time and speed';
                             ];
                             article [
                                 asciinema '/static/demos/demo-Formula1-Straight.cast';
                             ];
                         ];
+
                     Formula1-Drag => tab
                         vignette :direction<rtl>, [
                             article [ markdown q:to/END/;
-                                #### Formula1 Acceleration
+                                #### Formula1 - Drag
 
+                                Alternate view: force & mass.
 
+                                  - Explosive acceleration — over 1.3g at entry speed
+                                  - Drag surge — air resistance rises rapidly with speed
+                                  - Fading acceleration — drops as drag grows
+                                  - Power loss — engine fights air, not just acceleration
 
                                 END
-                                code-note 'use LLM to grab real-world values';
+                                code-note 'using mass, force and accelaration';
                             ];
                             article [
                                 asciinema '/static/demos/demo-Formula1-Drag.cast';
+                            ];
+                        ];
+
+                    Formula1-Energy => tab
+                        vignette :direction<rtl>, [
+                            article [ markdown q:to/END/;
+                                #### Formula1 - Energy
+
+                                Energy and power take.
+
+                                  -
+
+                                END
+                                code-note 'using energy and power';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Formula1-Energy.cast';
+                            ];
+                        ];
+
+                    Formula1-Formulae => tab
+                        vignette :direction<rtl>, [
+                            article [ markdown q:to/END/;
+                                #### Formula1 - Formulae
+
+                                Energy and power take.
+
+                                  -
+
+                                END
+                                code-note 'using energy and power';
+                            ];
+                            article [
+                                asciinema '/static/demos/demo-Formula1-Formulae.cast';
                             ];
                         ];
                 ];
