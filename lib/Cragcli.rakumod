@@ -703,7 +703,7 @@ site :@tools, :register[Background.new, LightDark.new, Air::Plugin::Asciinema.ne
                                   - Relentless drag consumes most of the energy
 
                                 END
-                                code-note 'using energy and power';
+                                code-note 'using mass, energy and power';
                             ];
                             article [
                                 asciinema '/static/demos/demo-Formula1-Energy.cast';
