@@ -1,28 +1,33 @@
 schema: spec-driven
 
 context: |
-  Tech stack: Raku, Air framework, Cro HTTP, htmx, picocss (blue theme), SCSS.
+  Tech stack: Raku, Air framework, Cro HTTP, htmx, picocss (green theme), SCSS.
 
   Air elements in use:
-  - Air::Functional :BASE — h1, h3, p, div, a, img, span, grid, safe (HTML DSL)
-  - Air::Base — site, page, nav, footer, main, external, Analytics, LightDark
-  - Air::Plugin::Hilite — hilite (syntax highlighting, :lang for non-Raku), LightDark plugin
+  - Air::Functional :BASE — h1, h3, p, div, a, img, span, article, header, footer, grid, spacer, safe (HTML DSL)
+  - Air::Base — site, page, nav, main, footer, external, Analytics, background, markdown
 
   Site construction pattern:
-    - `page.assuming(...)` partially applies global page parameters (title, favicon, nav, footer)
-    - `site :@tools :register [...] :theme-color<blue>` wraps all pages
+    - `page.assuming(...)` partially applies global page parameters (title, favicon, description, footer)
+    - `background(...)` creates a watermark $shadow passed into each page sub
+    - `site :@tools :$html404 :theme-color<green> :bold-color<#0000F3>` wraps all pages
     - `Analytics.new :provider(Umami) :key<...>` for analytics
-    - `LightDark` registered as both a plugin and a nav widget
-    - `external :href<...>` creates external link objects for nav items
-    - `grid :cols(2) :gap(6)` for two-column layouts
-    - `hilite :lang('python')` for non-Raku code; bare `hilite` defaults to Raku
+    - `nav(logo => ...)` with no nav items — logo-only nav linking back to raku.org
+    - `grid :grid-template-columns("1fr 2fr 1fr")` for centred hero layout
+    - `grid :cols(2) :gap(2)` for two-column card layouts
+    - `article [ header [...]; ...; footer [...] ]` for content cards with linked footers
+    - `markdown q:to/END/` for inline Markdown within articles
     - `safe Q|...|` for raw HTML strings embedded in Air output
 
-  Styling: picocss base with custom SCSS overrides in static/css/styles.scss.
-  Raku syntax highlighting uses rainbow-* CSS classes with CSS custom properties.
+  Pages:
+    - Home (lib/RakuFoundation/Home.rakumod) — hero + 2-col article grid
+    - HTML404 (lib/RakuFoundation/HTML404.rakumod) — registered via :$html404 on site
+
+  Styling: picocss green theme with custom SCSS overrides in static/css/styles.scss.
+  Bold colour override: #0000F3. Article border added. Footer text scaled to 66%.
 
   Deployment:
-  - Docker image: quay.io/librasteve/slangify-org:latest
+  - Docker image: quay.io/librasteve/slangify-org:latest  (image name pending rename)
   - CI/CD: GitHub Actions → scripts/cibuild.sh on push to main
   - Server: docker-compose + Caddy reverse proxy (multi-site setup)
   - Port: 3000 (CRO_WEBSITE_HOST/PORT env vars)
