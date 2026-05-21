@@ -5,6 +5,7 @@ use Air::Base;
 
 use RakuFoundation::Home;
 use RakuFoundation::HTML404;
+use RakuFoundation::MemberForm;
 
 my &basepage = &page.assuming(
     title       => 'Raku Foundation',
@@ -52,4 +53,7 @@ my Nav $nav =
 $home.nav = $nav;
 
 our $site =
-    site :@tools, :theme-color<green>, :bold-color<#0000F3>, :$html404, :pages[$home];
+    site :register[Background.new, Dashboard.new, Panel.new, $member],
+         :theme-color<green>, :bold-color<#0000F3>,
+         :@tools, :$html404,
+         :pages[$home];
