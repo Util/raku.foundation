@@ -25,6 +25,11 @@ sub home-page(&basepage, $shadow) is export {
                     ## Formation & Membership
 
                     On 1 May 2026, a legal entity for _The Raku Foundation_ was registered in the Netherlands.
+                    A _Stichting_ with registration number 42050836.
+
+                    Community feedback shaped the formation; the aim throughout has been a
+                    member-driven organisation with annual elections and the -Ofun paradigm
+                    at its heart.
 
                     It is going to take a little time for the Executive Board to put in place
                     the registration of Raku community members and democratic procedures
@@ -34,21 +39,27 @@ sub home-page(&basepage, $shadow) is export {
                     _Raku contributors (of all kinds) interested in membership please register above._
 
                     END
-                    footer [ a('legal registration →', :href<https://www.kvk.nl/bestellen/#/42050836g>, :target<_blank>) ];
+                    footer [ a('legal registration →', :href<https://www.kvk.nl/bestellen/#/42050836/>, :target<_blank>) ];
                 ];
                 article [
                     markdown q:to/END/;
                     ## Rationale
 
-                    The rationale for a separate Raku Foundation was set forward on 18 June 2025 by Elizabeth Mattijsen in an article on Dev.to.
+                    Raku began as Perl6 and inherited its organisational home — Yet Another
+                    Society, now The Perl and Raku Foundation. That connection has always
+                    felt like a historical remnant: TPRF struggles to raise funding
+                    specifically for Raku, and the communities have grown apart.
 
-                    There have been detailed discussions with all those who responded to the
-                    original post, and anyone who wanted to get involved. This also means
-                    that members of the Raku Steering Council and The Perl and Raku
-                    Foundation have been consulted with. A draft set of Articles of
-                    Association, Regulations, and Code of Conduct have been written and were
-                    linked to in various places. The aim was to create a community-driven
-                    organisation with annual elections, and to be true to the -oFun paradigm.
+                    A dedicated Raku Foundation gives the language its own independent
+                    representation and fundraising ethos — letting TPRF refocus on Perl
+                    while Raku charts its own course.
+
+                    There is also a timely opportunity: the EU Cyber Resilience Act
+                    introduces the category of _Open-source software steward_, a role
+                    the Foundation is well-placed to fill before the 2027 deadline.
+
+                    The rationale for a separate Raku Foundation was set forward on
+                    18 June 2025 by Elizabeth Mattijsen in an article on Dev.to.
 
                     END
                     footer [ a('rationale →', :href<https://dev.to/lizmat/towards-a-raku-foundation-3ne2>, :target<_blank>) ];
