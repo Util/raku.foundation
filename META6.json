@@ -1,22 +1,20 @@
 {
-    "name": "Slangify",
-    "description": "slangify.org website",
+    "name": "RakuFoundation",
+    "description": "raku.foundation website",
     "version": "0.0.1",
     "authors": [
         "librasteve"
     ],
     "auth": "zef:librasteve",
     "depends": [
-        "Air",
-        "Air::Plugin::Hilite"
+        "Air"
     ],
     "build-depends": [],
     "provides": {
-        "Slangify": "lib/Slangify.rakumod",
-        "Slangify::Home": "lib/Slangify/Home.rakumod",
-        "Slangify::Why": "lib/Slangify/Why.rakumod",
-        "Slangify::Python": "lib/Slangify/Python.rakumod"
+        "RakuFoundation": "lib/RakuFoundation.rakumod",
+        "RakuFoundation::Home": "lib/RakuFoundation/Home.rakumod",
+        "RakuFoundation::HTML404": "lib/RakuFoundation/HTML404.rakumod"
     },
     "license": "Artistic-2.0",
-    "source-url": "https://github.com/librasteve/slangify.org.git"
+    "source-url": "https://github.com/librasteve/raku.foundation.git"
 }
