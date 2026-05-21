@@ -17,9 +17,9 @@ services:
       - webnet
     restart: unless-stopped
 
-  raku-foundation:
-    image: quay.io/librasteve/raku-foundation:latest
-    container_name: raku-foundation
+  slangify-org:
+    image: quay.io/librasteve/slangify-org:latest
+    container_name: slangify-org
     expose:
       - "3000"
     networks:
@@ -59,6 +59,15 @@ services:
       GRAMMAR_WORKER_TIMEOUT: "60"
     networks:
       - grammar-net
+    restart: unless-stopped
+
+  raku-foundation:
+    image: quay.io/librasteve/raku-foundation:latest
+    container_name: raku-foundation
+    expose:
+      - "3000"
+    networks:
+      - webnet
     restart: unless-stopped
 
   caddy:
