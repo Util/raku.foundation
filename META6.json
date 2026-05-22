@@ -7,7 +7,8 @@
     ],
     "auth": "zef:librasteve",
     "depends": [
-        "Air"
+        "Air",
+        "Net::SMTP"
     ],
     "build-depends": [],
     "provides": {

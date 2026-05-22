@@ -32,7 +32,7 @@ sub home-page(&basepage, $shadow) is export {
                     A _Stichting_ with registration number 42050836.
 
                     Community feedback shaped the formation; the aim throughout has been a
-                    member-driven organisation with annual elections and the -Ofun paradigm
+                    member-driven organisation with annual elections and the `-Ofun` paradigm
                     at its heart.
 
                     It is going to take a little time for the Executive Board to put in place
