@@ -46,12 +46,13 @@ my Nav $nav =
                     p :style("margin:0"),"Raku®";
                 ]
             ),
+        :widgets[lightdark],
     );
 
 $home.nav = $nav;
 
 our $site =
-    site :register[Background.new, Dashboard.new, Panel.new, $member],
+    site :register[Background.new, LightDark.new, Dashboard.new, Panel.new, $member],
          :theme-color<green>, :bold-color<#0000F3>,
          :$html404,
          :pages[$home];
